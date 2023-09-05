@@ -9,7 +9,6 @@ function Demo() {
   })
   const [articles, setArticles] = useState([])
   const [copied, setCopied] = useState('')
-
   // RTK lazy query
   const [getSummary, { error, isFetching }] = useLazyGetSummaryQuery()
 
@@ -27,7 +26,6 @@ function Demo() {
 
     const { data } = await getSummary({ articleUrl: article.url })
     if (data?.summary) {
-      // update state and local storage
       setArticle((v) => ({ ...v, summary: data.summary }))
       setArticles((v) => [article, ...v])
       localStorage.setItem('articles', JSON.stringify(articles))
